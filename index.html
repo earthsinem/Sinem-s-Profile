@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Devicon icon set for technology logos -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sinem DEMIR</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      const tabs = document.querySelectorAll('.tabs a[data-tab]');
+
+      sections.forEach(sec => sec.classList.remove('active'));
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      document.getElementById(sectionId).classList.add('active');
+      document.querySelector(`.tabs a[data-tab="${sectionId}"]`).classList.add('active');
+    }
+
+    window.onload = function () {
+      showSection('home');
+    };
+  </script>
+</head>
+
+
+<body>
+  <div class="sidebar">
+    <img src="Profile.jpg" alt="Sinem DEMIR" class="profile-photo" />
+    <div class="sidebar-info">
+      <h2>Sinem DEMIR</h2>
+      <p class="title">Data Analyst at @CERN<br>Applied Economist</p>
+      <p>
+  🎓 MSc in Applied Economics, major in Data Science (University of Neuchâtel, Switzerland)
+      </p>
+      <p>📍 Geneva, Switzerland</p>
+      <p>✉️ <a href="mailto:sinem.demir@cern.ch">Email</a></p> 
+      <p>🐙 <a href="https://github.com/earthsinem?tab=projects" target="_blank">GitHub</a></p>
+      <p>🔗 <a href="https://www.linkedin.com/in/sinem-demir-msc-bb6690151/" target="_blank">LinkedIn</a></p>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Top navigation tabs -->
+    <nav class="tabs">
+      <a href="javascript:void(0)" data-tab="home" onclick="showSection('home')">Home</a>
+      <a href="CV.pdf" target="_blank" rel="noopener noreferrer" class="cv-link">CV</a>
+      <a href="javascript:void(0)" data-tab="papers" onclick="showSection('papers')">Academic Research</a>
+      <a href="javascript:void(0)" data-tab="experience" onclick="showSection('experience')">Experience</a>
+      <a href="javascript:void(0)" data-tab="projects" onclick="showSection('projects')">Projects</a>
+      <a href="javascript:void(0)" data-tab="awards" onclick="showSection('awards')">Awards</a>
+    </nav>
+
+    <!-- Content Sections -->
+    <div id="home" class="section">
+      <h1>Welcome to My Profile</h1>
+      <p>
+        Hello! I’m <strong>Sinem Demir</strong>, a data analyst and applied economist currently based in Geneva, Switzerland. Ever since I started exploring the world of data, I’ve been fascinated by how numbers can tell stories, reveal hidden patterns, and help make decisions that matter. My journey has taken me from academic research to hands-on industry work, and I love finding creative ways to bridge theory with real-world solutions.
+      </p>
+      <p>
+        Throughout my career, I’ve had the opportunity to work on a variety of projects—from sustainability analysis in supply chains to modeling scientific data at CERN. I thrive in collaborative environments where I can learn from others and contribute my analytical mindset to tackle interesting challenges.
+      </p>
+      <p>
+        This site brings together my academic background, professional experiences, and personal projects. Here, you’ll find my CV, some of my published papers, details about my thesis, and highlights from projects that have been especially meaningful to me.
+      </p>
+    </div>
+
+
+    <div id="cv" class="section">
+      <h1>Sinem DEMIR</h1>
+      <h2>Data Scientist | Applied Economist | Researcher</h2>
+      <h3>About Me</h3>
+      <p>I specialize in transforming complex datasets into actionable insights using tools like Python, SQL, R, and SPARK...</p>
+      <h3>Contact</h3>
+      <ul>
+        <li>Email: sinem.demir@cern.ch</li>
+        <li><a href="https://github.com/yourusername" target="_blank">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/sinem-demir-msc-bb6690151/" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div id="projects" class="section">
+      <h1>Projects</h1>
+
+      <!-- Web Scraping -->
+      <h2>Web Scraping</h2>
+      <div class="project-card">
+        <h3>Hotel Pricing Data Aggregator</h3>
+        <p><strong>Tools:</strong> Python, BeautifulSoup, Requests</p>
+        <p>
+          Built a Python script to automatically scrape hotel pricing data from multiple booking sites, enabling competitive pricing analysis for hospitality clients.
+        </p>
+        <!-- Optional: <a href="https://github.com/yourusername/project-repo" target="_blank">View code</a> -->
+      </div>
+      <!-- Add more web scraping projects here -->
+
+      <!-- GitLab Project -->
+      <h2>GitLab Project</h2>
+      <div class="project-card">
+        <h3>Team Collaboration Dashboard</h3>
+        <p><strong>Tools:</strong> GitLab API, Python, Dash</p>
+        <p>
+          Developed an internal dashboard to monitor merge requests, issues, and CI/CD pipelines for a distributed software team.
+        </p>
+      </div>
+      <!-- More GitLab projects if you have them -->
+
+      <!-- Automation in Microsoft Excel w/ VBA -->
+      <h2>Automation in Microsoft Excel (VBA)</h2>
+      <div class="project-card">
+        <h3>Inventory Management Automation</h3>
+        <p><strong>Tools:</strong> Excel, VBA</p>
+        <p>
+          Automated inventory tracking and report generation using custom VBA macros, reducing manual workload and minimizing errors.
+        </p>
+      </div>
+      <!-- More Excel/VBA projects if needed -->
+
+      <!-- Automation process in Python -->
+      <h2>Automation in Python</h2>
+      <div class="project-card">
+        <h3>Helium Flow Data Pipeline</h3>
+        <p><strong>Tools:</strong> Python, Pandas, NXCALS API</p>
+        <p>
+          Automated daily extraction and processing of helium flow data at CERN, integrating with reporting tools for the cryogenics team.
+        </p>
+      </div>
+      <!-- More Python automation projects -->
+    </div>
+
+
+
+  <div id="papers" class="section">
+  <header class="page-head">
+    <h1>Academic Research</h1>
+    <p class="head-actions">
+      <a href="Academic_CV.pdf" target="_blank" rel="noopener noreferrer" class="link-quiet">📄 Download Academic CV</a>
+    </p>
+  </header>
+
+  <!-- Filters -->
+  <section class="papers-filters" aria-label="Filters for Academic Research">
+    <select id="papers-filter-year" aria-label="Filter by year">
+      <option value="">All years</option>
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+    </select>
+
+    <select id="papers-filter-topic" aria-label="Filter by topic">
+      <option value="">All topics</option>
+      <option value="Environmental Economics">Environment</option>
+      <option value="Urban Policy">Urban Policy</option>
+      <option value="Energy Economics">Energy</option>
+      <option value="Health Economics">Health</option>
+      <option value="Labor Economics">Labor Economics</option>
+    </select>
+
+    <select id="papers-filter-method" aria-label="Filter by method">
+      <option value="">All methods</option>
+      <option value="Machine Learning">Machine Learning</option>
+      <option value="Causal Inference">Causal Inference</option>
+      <option value="DiD">DiD</option>
+      <option value="ARMA">ARMA</option>
+    </select>
+
+    <input id="papers-filter-q" type="search" placeholder="Search title/tags…" aria-label="Search" />
+  </section>
+
+  <!-- Thesis -->
+  <h2 class="section-title">Thesis</h2>
+  <section class="papers-grid">
+    <article class="paper-card thesis-card" data-year="2023" data-topic="Environmental Economics" data-method="Machine Learning">
+      <header>
+        <h3>Predictive Deforestation Risk
+
+Advanced Methods for Deforestation Analysis and Sustainable
+Commodity: The Case Study in Indonesia</h3>
+        <div class="paper-meta">MSc Thesis, University of Neuchâtel, 2023</div>
+      </header>
+      <ul class="paper-bullets">
+        <li>Developed a predictive model for crop yield estimation using multi-temporal satellite imagery (Sentinel-2).</li>
+        <li>Applied machine learning algorithms including Random Forest and Gradient Boosting to integrate spectral indices and climatic variables.</li>
+        <li>Achieved high predictive accuracy and identified key vegetation indices influencing yield variability.</li>
+      </ul>
+      <nav class="paper-actions">
+        <a class="btn ghost" href="details.html?id=thesis-msc" target="_blank" rel="noopener">View details</a>
+      </nav>
+    </article>
+
+    <article class="paper-card thesis-card" data-year="2021" data-topic="Labor Economics" data-method="Econometrics">
+      <header>
+        <h3>A Comparative Analysis from Perspectives of Gender: 
+The Patterns of Women Workforce during COVID-19 in Germany and Turkey</h3>
+        <div class="paper-meta">BSc Thesis, Bilkent University, 2021</div>
+      </header>
+      <ul class="paper-bullets">
+        <li>Analyzed the effects of exchange rate volatility on Turkey’s agricultural export performance.</li>
+        <li>Applied econometric models including GARCH to measure volatility and fixed-effects panel regressions to estimate impacts.</li>
+        <li>Found that exchange rate volatility has a statistically significant negative effect on agricultural exports, with variations across product categories.</li>
+      </ul>
+      <nav class="paper-actions">
+        <a class="btn ghost" href="details.html?id=thesis-bsc" target="_blank" rel="noopener">View details</a>
+      </nav>
+    </article>
+  </section>
+
+  <!-- BSc Thesis -->
+
+
+
+  <!-- Selected Papers & Projects -->
+  <h2 class="section-title">Selected Papers &amp; Projects</h2>
+
+<section class="papers-grid">
+  <article class="paper-card" data-year="2023" data-topic="Health Economics" data-method="Causal Inference">
+    <header>
+      <h3>Monetary Incentives Increase COVID-19 Vaccinations</h3>
+      <div class="paper-meta">Health Economics, Université de Neuchâtel, 2023</div>
+    </header>
+    <ul class="paper-bullets">
+      <li>Empirically analyzed how monetary and non-monetary incentives impact vaccine uptake.</li>
+      <li>Applied regression and statistical analysis using Stata.</li>
+    </ul>
+    <nav class="paper-actions">
+      <a class="btn ghost" href="details.html?id=covid-incentives" target="_blank" rel="noopener">View details</a>
+      <a class="btn ghost" href="Individual_Essay.pdf" target="_blank" rel="noopener">📄 Discussion</a>
+    </nav>
+    </article>
+
+    <article class="paper-card" data-year="2023" data-topic="Urban Policy" data-method="DiD">
+      <header>
+        <h3>The Impact of the London Congestion Zone Policy on Accidents</h3>
+        <div class="paper-meta">Applied Microeconometrics Project, Université de Neuchâtel, 2023</div>
+      </header>
+      <ul class="paper-bullets">
+        <li>Difference-in-differences analysis of traffic accidents before and after policy implementation.</li>
+        <li>Explored regional spillovers and robustness using panel data.</li>
+      </ul>
+      <nav class="paper-actions">
+        <a class="btn ghost" href="details.html?id=london-congestion" target="_blank" rel="noopener">View details</a>
+      </nav>
+    </article>
+
+    <article class="paper-card" data-year="2022" data-topic="Energy Economics" data-method="ARMA">
+      <header>
+        <h3>Natural Gas Consumption Forecast in Switzerland using ARMA Models</h3>
+        <div class="paper-meta">Applied Macroeconometrics Project, Université de Neuchâtel, 2022</div>
+      </header>
+      <ul class="paper-bullets">
+        <li>Forecasted Switzerland’s natural gas demand using ARMA time series models.</li>
+        <li>Analyzed the impact of geopolitical risks and supply constraints on national energy planning.</li>
+      </ul>
+      <nav class="paper-actions">
+        <a class="btn ghost" href="details.html?id=swiss-gas-arma" target="_blank" rel="noopener">View details</a>
+      </nav>
+    </article>
+
+    <article class="paper-card" data-year="2022" data-topic="Health Economics" data-method="Causal Inference">
+      <header>
+        <h3>Answering that Proverbial Question: Is Smoking the Effect on Birthweight?</h3>
+        <div class="paper-meta">Applied Econometrics Project, Bilkent University, 2022</div>
+      </header>
+      <ul class="paper-bullets">
+        <li>Estimated causal treatment effects using matched panel data and regression analysis.</li>
+        <li>Quantified the health impact of maternal smoking with policy relevance for prenatal care.</li>
+      </ul>
+      <nav class="paper-actions">
+        <a class="btn ghost" href="details.html?id=birthweight-smoking" target="_blank" rel="noopener">View details</a>
+      </nav>
+    </article>
+  </section>
+</div>
+
+
+
+
+
+
+    <div id="awards" class="section">
+          <h1>Awards & Certificates</h1>
+          <div class="timeline">
+            <div class="timeline-event left">
+              <div class="award-card">
+                <h2>2024 · McKinsey Forward Program Certificate</h2>
+                <p>Completed a prestigious program focused on developing strategic problem-solving and leadership skills.</p>
+              </div>
+            </div>
+            <div class="timeline-event right">
+              <div class="award-card">
+                <h2>2024 · We Bloom Wave Fellowship Certificate</h2>
+                <p>Participated in a fellowship aimed at empowering women in technology and fostering professional growth.</p>
+              </div>
+            </div>
+            <div class="timeline-event left">
+              <div class="award-card">
+                <h2>2024 · Cisco Data Analytics Essentials Certificate</h2>
+                <p>Completed the Data Analytics Essentials course by Cisco Networking Academy.</p>
+              </div>
+            </div>
+            <div class="timeline-event right">
+              <div class="award-card">
+                <h2>2022 · Bilkent University High Honor Certificate</h2>
+                <p>Graduated with High Honor (GPA: 3.86/4.00) from Bilkent University.</p>
+              </div>
+            </div>
+            <div class="timeline-event left">
+              <div class="award-card">
+                <h2>2021 · 2nd Place, Financial Statement Analysis Project</h2>
+                <p>Achieved 2nd place in the “Understanding and Analyzing the Financial Statements” project, recognized for teamwork and analysis skills in a financial accounting project.</p>
+              </div>
+            </div>
+            <div class="timeline-event right">
+              <div class="award-card">
+                <h2>2020–2021 · Bilkent University Honor Certificate</h2>
+                <p>Awarded for academic achievement at Bilkent University during the 2020–2021 academic year.</p>
+              </div>
+            </div>
+            <div class="timeline-event left">
+              <div class="award-card">
+                <h2>2019 · UNFPA Orange Peak Certificate</h2>
+                <p>Focused on women’s empowerment and leadership development, awarded by UNFPA.</p>
+              </div>
+            </div>
+          </div>
+        </div> 
+</body>
+</html>
+
+
+<div id="experience" class="section">
+  <h1>Experience</h1>
+
+  <div>
+    <!-- CERN -->
+    <article class="exp-item">
+      <div class="exp-card">
+        <header class="exp-header">
+          <div>
+            <h3 class="exp-role">Data Analyst</h3>
+            <div class="exp-meta">CERN · Geneva, Switzerland · 2024–Present</div>
+          </div>
+
+          <!-- company logo link -->
+          <a class="company-logo-link"
+            href="https://home.cern/"
+            target="_blank" rel="noopener"
+            aria-label="Visit CERN website">
+            <img src="cern.jpg" alt="CERN logo" class="company-logo" style="height:66px; width:auto;">
+
+          </a>
+        </header>
+
+        <ul class="exp-bullets">
+          <li>Designed robust data pipelines &amp; metrics in Python (SWAN, Spark) to automate cryogenic signal processing and integrate test data with GitHub-backed dashboards (Grafana, Jupyter).</li>
+          <li>Researched browser-based URL encoding to streamline multi-platform data retrieval and improve data accessibility.</li>
+          <li>Contributed to an AI initiative exploring RAG and GPT-like LLMs; prototyped with Streamlit, and documented work in Confluence; explored Kubernetes &amp; OpenSearch tooling.</li>
+          <li>Created dynamic PL/SQL tables and built 50+ automated reports with Pentaho; validated workflows with the CERN Upload Utility System.</li>
+          <li>Supported teams with SQL scripting (DBeaver, MS Access) and maintained large-scale CRG KPI datasets; presented insights at cross-team meetings.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Earthworm Foundation -->
+    <article class="exp-item">
+      <div class="exp-card">
+        <header class="exp-header">
+          <div>
+            <h3 class="exp-role">Junior Data Analyst</h3>
+            <div class="exp-meta">Earthworm Foundation · 2023</div>
+          </div>
+
+          <!-- company logo link -->
+          <a class="company-logo-link"
+            href="https://www.earthworm.org/"
+            target="_blank" rel="noopener"
+            aria-label="Visit Earthworm Foundation website">
+            <img src="EF.png" alt="Earthworm Foundation logo" class="company-logo" >
+          </a>
+        </header>
+
+        <ul class="exp-bullets">
+          <li>Standardized supply-chain data and optimized sustainability processes in Jupyter, reducing resource waste by ~20%.</li>
+          <li>Automated Excel workflows with Python, saving ~15 hours/week; built web-scraping scripts to enhance data freshness.</li>
+          <li>Led meetings with international teams (Indonesia, Malaysia) to align goals and delivery plans.</li>
+          <li>Presented project outcomes to an audience of ~120; supported SCA NDV Data Team with reporting (VBA macros, Tableau) for 50+ stakeholders.</li>
+        </ul>
+      </div>
+    </article>
+
+
+<!-- Skills -->
+<h2 class="skills-heading">Skills</h2>
+
+<div class="skills-scroll-wrapper" aria-label="Technical skills">
+  <div class="skills-scroll">
+    <!-- Languages / DS -->
+    <i class="devicon-python-original colored" title="Python" aria-label="Python"></i>
+    <img src="java.png" alt="Java" class="skill-img" title="Java">
+    <img src="stata.png" alt="Stata" class="skill-img" title="Stata">
+    <i class="devicon-r-original colored" title="R" aria-label="R"></i>
+    <img src="matlab.jpg" alt="Matlab" class="skill-img" title="Matlab">
+    <img src="mysql.png" alt="MySQL" class="skill-img" title="MySQL">
+    <img src="postgresql.png" alt="PostgreSQL" class="skill-img" title="PostgreSQL">
+    <i class="devicon-latex-original colored" title="LaTeX" aria-label="LaTeX"></i>
+
+    <!-- Tools / IDEs -->
+    <i class="devicon-github-original colored" title="GitHub" aria-label="GitHub"></i>
+    <i class="devicon-visualstudio-plain colored" title="Visual Studio" aria-label="Visual Studio"></i>
+    <i class="devicon-pycharm-plain colored" title="PyCharm" aria-label="PyCharm"></i>
+    <img src="jupyter.png" alt="Jupyter" class="skill-img" title="Jupyter">
+    <img src="dbeaver.jpg" alt="DBeaver" class="skill-img" title="DBeaver">
+
+    <!-- Analytics / BI -->
+    <img src="powerbi.jpg" alt="Powerbi" class="skill-img" title="Powerbi">
+    <img src="Notion.png" alt="Notion" class="skill-img" title="Notion">
+    <img src="tableau.jpg" alt="Tableau" class="skill-img" title="Tableau">
+    <i class="devicon-amazonwebservices-plain-wordmark colored" title="AWS" aria-label="AWS"></i>
+
+    <!-- Productivity / Collab -->
+    <img src="Microsoft.jpg" alt="Microsoft" class="skill-img" title="Microsoft">
+    <img src="vba.png" alt="Access" class="skill-img" title="VBA">
+    <img src="asana.png" alt="Asana" class="skill-img" title="Asana">
+    <img src="drupal.jpg" alt="Drupal" class="skill-img" title="Drupal">
+    <i class="devicon-confluence-original colored" title="Confluence" aria-label="Confluence"></i>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const scope = document.getElementById('papers');
+  if (!scope) return;
+
+  const els = {
+    year:   scope.querySelector('#papers-filter-year'),
+    topic:  scope.querySelector('#papers-filter-topic'),
+    method: scope.querySelector('#papers-filter-method'),
+    q:      scope.querySelector('#papers-filter-q'),
+  };
+
+  const cards = Array.from(scope.querySelectorAll('.paper-card'));
+  const norm = v => (v||'').toLowerCase().trim();
+
+  function apply(){
+    const year = norm(els.year?.value);
+    const topic = norm(els.topic?.value);
+    const method = norm(els.method?.value);
+    const q = norm(els.q?.value);
+
+    cards.forEach(card=>{
+      const cy = norm(card.getAttribute('data-year'));
+      const ct = norm(card.getAttribute('data-topic'));
+      const cm = norm(card.getAttribute('data-method'));
+      const text = norm(card.innerText);
+
+      const ok =
+        (!year   || cy === year) &&
+        (!topic  || ct === topic) &&
+        (!method || cm === method) &&
+        (!q      || text.includes(q));
+
+      card.style.display = ok ? '' : 'none';
+    });
+  }
+
+  ['change'].forEach(evt=>{
+    els.year?.addEventListener(evt, apply);
+    els.topic?.addEventListener(evt, apply);
+    els.method?.addEventListener(evt, apply);
+  });
+  els.q?.addEventListener('input', apply);
+
+  apply();
+})();
+</script>

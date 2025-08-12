@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .paper-block{margin:28px 0}
+    .nice-table{width:100%;border-collapse:collapse}
+    .nice-table th,.nice-table td{border:1px solid #eee;padding:10px;text-align:left}
+    .table-scroll{overflow:auto}
+    .figs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+    .figs-grid figure{margin:0}
+    .small.note{color:#666;font-size:.95em;margin-top:8px}
+    .paper-tags .tag{display:inline-block;background:#f2f4f7;border:1px solid #e7e9ee;border-radius:999px;padding:.2rem .6rem;margin-right:.4rem;font-size:.85rem}
+    .head-actions{margin-top:.5rem}
+    .btn{display:inline-block;padding:.5rem .9rem;border:1px solid #dcdfe6;border-radius:8px;text-decoration:none}
+    .btn:hover{text-decoration:none;filter:brightness(0.98)}
+    .link-quiet{text-decoration:none}
+    .crumbs{margin:12px 0}
+  </style>
+</head>
+<body>
+
+  <main class="wrap">
+    <nav class="crumbs">← <a href="index.html" onclick="window.history.back();return false;">Back</a></nav>
+
+    <header class="detail-head">
+      <h1 id="d-title">Loading…</h1>
+      <div id="d-meta" class="paper-meta"></div>
+      <div id="d-tags" class="paper-tags"></div>
+      <div class="head-actions">
+        <a id="d-download" class="btn" href="#" target="_blank" rel="noopener">📄 Download PDF</a>
+      </div>
+    </header>
+
+    <!-- Unified details layout -->
+    <section class="paper-details wrap" style="max-width:900px;margin:0 auto;padding:24px">
+
+      <section id="d-key" class="paper-block">
+        <h2>Key takeaways</h2>
+        <ul id="d-keylist"></ul>
+      </section>
+
+      <section id="d-abstract" class="paper-block">
+        <h2>Abstract</h2>
+        <div id="d-abstract-text"></div>
+      </section>
+
+      <section id="d-methods" class="paper-block">
+        <h2>Methods & Data</h2>
+        <div id="d-methods-text"></div>
+      </section>
+
+      <section id="d-results" class="paper-block">
+        <h2>Results</h2>
+
+        <!-- MSc: Model performance table -->
+        <div id="msc-models" style="display:none">
+          <h3>Model performance (lower = better)</h3>
+          <div class="table-scroll">
+            <table class="nice-table">
+              <thead>
+                <tr><th>Model</th><th>MSE</th><th>MAE</th><th>MedAE</th><th>MAPE</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Random Forest</td><td>0.1309</td><td>0.2819</td><td>0.2443</td><td>20.29%</td></tr>
+                <tr><td>Gradient Boosting</td><td>0.1414</td><td>0.2925</td><td>0.2452</td><td>26.56%</td></tr>
+                <tr><td>Decision Tree</td><td>0.1414</td><td>0.2923</td><td>0.2449</td><td>26.52%</td></tr>
+                <tr><td>Neural Network</td><td>0.1744</td><td>0.3277</td><td>0.2624</td><td>29.88%</td></tr>
+                <tr><td>KNN</td><td>0.1677</td><td>0.3120</td><td>0.2395</td><td>28.08%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small note">Random Forest performed best overall across error metrics.</p>
+        </div>
+
+        <!-- BSc: Key indicators table -->
+        <div id="bsc-key" style="display:none">
+          <h3>Key indicators (TR vs DE)</h3>
+          <div class="table-scroll">
+            <table class="nice-table">
+              <thead>
+                <tr><th>Indicator</th><th>Turkey</th><th>Germany</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Sample size (N)</td><td>401</td><td>103</td></tr>
+                <tr><td>Domestic responsibilities ↑ during COVID</td><td>~70.5%</td><td>~48–52%</td></tr>
+                <tr><td>Experienced physical violence during COVID</td><td>~17.4%</td><td>~8%</td></tr>
+                <tr><td>Future outlook (better/worse)</td><td>~76% expect worse</td><td>~81% expect better</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small note">Survey window: Nov 28–Dec 16, 2021. Values summarized from the study’s figures/tables.</p>
+        </div>
+
+        <!-- Optional figures you can add later -->
+        <div id="d-figures" class="figs-grid"></div>
+      </section>
+
+      <section id="d-discussion" class="paper-block">
+        <h2>Discussion & Implications</h2>
+        <div id="d-discussion-text"></div>
+      </section>
+    </section>
+
+    <footer class="foot-note">© <span id="year"></span> Sinem Demir</footer>
+  </main>
+
+  <script>
+  (function(){
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id') || 'thesis-msc';
+
+    const $ = sel => document.querySelector(sel);
+    const set = (sel, html) => ($(sel).innerHTML = html);
+
+    function setTags(tags){
+      const box = $('#d-tags'); box.innerHTML = '';
+      (tags||[]).forEach(t=>{
+        const s = document.createElement('span');
+        s.className = 'tag';
+        s.textContent = t;
+        box.appendChild(s);
+      });
+    }
+
+    if(id === 'thesis-msc'){
+      document.title = 'Predictive Deforestation Risk for Indonesian Provinces – Details';
+      set('#d-title','Predictive Deforestation Risk for Indonesian Provinces');
+      set('#d-meta','MSc Thesis · University of Neuchâtel · 2024');
+      setTags(['Sustainability','Machine Learning','Indonesia']);
+      $('#d-download').href = 'Msc_Thesis.pdf';
+
+      // Key takeaways
+      $('#d-keylist').innerHTML = `
+        <li>Benchmarked Gradient Boosting, Random Forest, Decision Tree, Neural Network, and KNN; <strong>Random Forest performed best overall</strong>.</li>
+        <li>Clustering separated provinces into risk profiles (e.g., Kalimantan Timur high risk; Bali lower risk).</li>
+        <li>Key drivers: <em>tree loss</em> and <em>total area harvested</em> (first decision split on tree-loss hectares).</li>
+      `;
+
+      // Abstract (short)
+      set('#d-abstract-text', `
+        Predicts deforestation risk across Indonesian provinces using supply-chain and environmental covariates. Multiple ML models
+        were compared; Random Forest achieved the best balance of MSE/MAE/MAPE. Clustering reveals distinct regional risk profiles
+        to guide targeted mitigation.
+      `);
+
+      // Methods
+      set('#d-methods-text', `
+        <ul>
+          <li><strong>Data:</strong> harvested area & production (cocoa, coconut, coffee, sugar, soy, palm oil), tree loss, forest/non-forest area,
+              GDP & population growth, deforestation alerts (hpp/false alerts).</li>
+          <li><strong>Preprocessing:</strong> cleaning, encoding, scaling for NN/KNN; outlier handling; log transforms where needed.</li>
+          <li><strong>Models:</strong> Random Forest, Gradient Boosting, Decision Tree, Neural Network, KNN with grid search and k-fold cross-validation.</li>
+          <li><strong>Clustering:</strong> K-Means (k=3) after StandardScaler (and optional PCA) to group provinces by risk & drivers.</li>
+        </ul>
+      `);
+
+      // Results: show models table
+      $('#msc-models').style.display = '';
+
+      // Optional figures (replace with your own images later)
+      $('#d-figures').innerHTML = `
+        <figure>
+          <img src="fig_province_risk_placeholder.png" alt="Province risk comparison (placeholder)" style="width:100%;height:auto;">
+        </figure>
+      `;
+
+      // Discussion
+      set('#d-discussion-text', `
+        Random Forest’s robustness and balanced errors make it suitable for operational monitoring. Clusters help prioritize
+        interventions (e.g., stricter controls where risk is highest; support sustainable production where risk is rising).
+        Incorporating policy enforcement, land tenure and market signals could further improve predictions.
+      `);
+    }
+
+    if(id === 'thesis-bsc'){
+      document.title = "COVID-19 and Women’s Labor-Force Participation – Details";
+      set('#d-title',"COVID-19 and Women’s Labor-Force Participation (Germany vs Turkey)");
+      set('#d-meta','BSc Project · Bilkent University · 2021');
+      setTags(['Gender','Labor','COVID-19']);
+      $('#d-download').href = 'Bsc_Thesis.pdf';
+
+      // Key takeaways
+      $('#d-keylist').innerHTML = `
+        <li>Survey of <strong>401 Turkish</strong> and <strong>103 German</strong> women (ages 15–64), Nov 28–Dec 16, 2021.</li>
+        <li>Domestic responsibilities increased notably (TR ~70.5%, DE ~48–52%).</li>
+        <li>Reported physical violence during COVID: TR ~17.4% vs DE ~8%.</li>
+        <li>Future outlook diverged: 76% in TR expect worsening conditions; 81% in DE expect improvement.</li>
+      `;
+
+      // Abstract (short)
+      set('#d-abstract-text', `
+        Mixed-methods analysis comparing how COVID-19 affected women’s work in Germany and Turkey. Results show sharper negative
+        impacts in Turkey—higher domestic load, more reported violence, and more pessimism about future employment—relative to
+        Germany’s better protections and outlook.
+      `);
+
+      // Methods
+      set('#d-methods-text', `
+        <ul>
+          <li><strong>Design:</strong> Mixed methods (literature + web survey in 5 sections). Fielded Nov 28–Dec 16, 2021.</li>
+          <li><strong>Sample:</strong> TR n=401; DE n=103; ~45y avg; 56% with children.</li>
+          <li><strong>Indicators:</strong> employment status, hours, income/productivity change, remote work, domestic duties, violence,
+              state support, future outlook.</li>
+        </ul>
+      `);
+
+      // Results: show BSc key table
+      $('#bsc-key').style.display = '';
+
+      // Optional figures (replace with your own images later)
+      $('#d-figures').innerHTML = `
+        <figure style="text-align:center;">
+          <img src="comparison.png" 
+              alt="The Situation of the German Women Workforce in the Future" 
+              style="max-width:40%;height:auto;display:inline-block;">
+          <figcaption>Source: The survey from the authors</figcaption>
+        </figure>
+      `;
+
+      // Discussion
+      set('#d-discussion-text', `
+        Findings suggest policy and workplace protections buffered impacts in Germany more than in Turkey. In TR, heavier
+        domestic burdens and higher violence reports align with more pessimistic labor-market expectations. The study supports
+        targeted support (income protection, childcare, anti-violence measures) and more flexible work options.
+      `);
+    }
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
+
+
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id') || 'thesis-msc';
+
+  const el = sel => document.querySelector(sel);
+  const set = (sel, html) => (el(sel).innerHTML = html);
+
+  // clear block toggles
+  if(document.getElementById('msc-models')) document.getElementById('msc-models').style.display='none';
+  if(document.getElementById('bsc-key')) document.getElementById('bsc-key').style.display='none';
+
+  // ---------- MSc & BSc already handled above ----------
+  // Add FOUR new layouts below
+
+  // HEALTH ECON: Monetary incentives & vaccination
+  if (id === 'covid-incentives') {
+  const setSafe = (sel, html) => {
+    const n = document.querySelector(sel);
+    if (n) n.innerHTML = html;
+  };
+  const q = s => document.querySelector(s);
+
+  setSafe('#d-title','Monetary Incentives Increase COVID-19 Vaccinations');
+  setSafe('#d-meta','Health Economics · Université de Neuchâtel · 2023');
+
+  const dl = q('#d-download');
+  if (dl) dl.href = 'Health_Economics_Project.pdf';
+
+  const key = q('#d-keylist');
+  if (key) {
+    key.innerHTML = `
+      <li>$24 cash incentive ↑ vaccination uptake by ~<strong>4 percentage points</strong>.</li>
+      <li>Nudges (social impact, arguments, info quiz) show smaller effects; reminders matter.</li>
+      <li>Intentions move in the same direction as uptake; monetary strongest.</li>
+    `;
+  }
+
+  setSafe('#d-abstract-text', `
+    Empirical replication/extension of a large RCT on COVID-19 vaccination.
+    We estimate treatment-on-uplift for uptake and intentions, comparing a monetary incentive arm
+    to several behavioral nudges. Monetary incentives have the clearest, statistically robust effect.
+  `);
+
+  setSafe('#d-methods-text', `
+    <ul>
+      <li><strong>Design:</strong> Replication + extension of a Swiss RCT with multiple treatment arms.</li>
+      <li><strong>Sample:</strong> Adult participants from across Switzerland, randomized into monetary incentive, nudges, or control.</li>
+      <li><strong>Analysis:</strong> Uptake measured from registry; intention measured via survey; regression estimates with robust SEs.</li>
+    </ul>
+  `);
+
+  // Add extra button for First Essay
+  if (dl) {
+    dl.insertAdjacentHTML(
+      'afterend',
+      '<a class="btn ghost" style="margin-left:10px;" href="Individual_Essay.pdf" target="_blank" rel="noopener">📄 Individual Essay</a>'
+    );
+  }
+}
+
+
+  // 2) APPLIED MICRO: London congestion charge & accidents (DiD)
+  if(id === 'london-congestion'){
+    set('#d-title','Impact of London’s Congestion Charge on Road Accidents');
+    set('#d-meta','Applied Microeconometrics · Université de Neuchâtel · 2023');
+    el('#d-download').href = 'Applied_Microeconometrics_Project.pdf';
+
+    el('#d-keylist').innerHTML = `
+      <li>DiD on 33 boroughs, monthly panel 1997–2008.</li>
+      <li>Policy associated with a <strong>statistically significant decrease</strong> in accidents (−8 to −14 monthly).</li>
+      <li>Results robust to borough FE, time FE, and spillover checks.</li>
+    `;
+
+    set('#d-abstract-text', `
+      Using a difference-in-differences design, we estimate the effect of the 2003 congestion charge on
+      monthly traffic accidents in London boroughs. Pre-trends are parallel; placebo checks support identification.
+    `);
+
+    set('#d-methods-text', `
+      <ul>
+        <li><strong>Data:</strong> Police-reported accidents by borough (monthly), treated vs control boroughs.</li>
+        <li><strong>Model:</strong> DiD with borough FE, optional time FE; robustness removing neighboring boroughs.</li>
+        <li><strong>Outcome:</strong> Monthly count of accidents.</li>
+      </ul>
+    `);
+
+    el('#d-results').insertAdjacentHTML('beforeend', `
+      <div class="paper-block">
+        <h3>Difference-in-Differences estimates (selected)</h3>
+        <div class="table-scroll">
+          <table class="nice-table">
+            <thead>
+              <tr><th>Spec</th><th>DiD effect (treated×post)</th><th>Controls</th><th>Note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Basic</td><td>≈ −9.1</td><td>—</td><td>Robust SEs</td></tr>
+              <tr><td>Borough FE</td><td>≈ −7.9</td><td>FE</td><td>Clustered SEs</td></tr>
+              <tr><td>FE + Time FE</td><td>≈ −7.7</td><td>FE + year/month FE</td><td>Best fit</td></tr>
+              <tr><td>Spillover check</td><td>≈ −13.6</td><td>Excl. adjacent ctrls</td><td>Similar magnitude</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `);
+
+      el('#d-figures').innerHTML = `
+    <figure style="text-align:center;">
+      <img src="fig_parallel_trends_placeholder.png" 
+          alt="Parallel trends"
+          style="max-width:80%;height:auto;display:inline-block;">
+    </figure>
+    <figure style="text-align:center;">
+      <img src="fig_spillover_effects.png" 
+          alt="Spillover Effects"
+          style="max-width:90%;height:auto;display:inline-block;">
+    </figure>
+  `;
+
+    set('#d-discussion-text', `
+      The congestion charge likely reduced collisions within the zone and over time.
+      Some re-routing spillovers exist, but core estimates remain negative and significant.
+      Pairing pricing with safer street design could amplify safety gains.
+    `);
+  }
+
+  // 3) APPLIED MACRO: Swiss gas ARMA forecast
+  if(id === 'swiss-gas-arma'){
+    set('#d-title','Natural Gas Consumption Forecast in Switzerland (ARMA)');
+    set('#d-meta','Applied Macroeconometrics · Université de Neuchâtel · 2022');
+    el('#d-download').href = 'Applied_Macroeconometrics_Project.pdf';
+
+    el('#d-keylist').innerHTML = `
+      <li>Annual series 1973–2021; trend-stationary.</li>
+      <li>Best fit: <strong>ARMA(3,2)</strong> with exogenous trend and gas price.</li>
+      <li>Scenario analysis (price shocks & trend) generates plausible short-run paths.</li>
+    `;
+
+    set('#d-abstract-text', `
+      We build an ARMA forecasting model for Swiss natural gas consumption with exogenous trend and price.
+      The series appears trend-stationary; residual diagnostics and Ljung–Box suggest good fit for ARMA(3,2).
+    `);
+
+    set('#d-methods-text', `
+      <ul>
+        <li><strong>Data:</strong> Our World in Data (consumption), FRED (price, FX), annualized to match.</li>
+        <li><strong>Model:</strong> ARMA(3,2) + deterministic trend; price as exogenous regressor.</li>
+        <li><strong>Checks:</strong> ADF, ACF/PACF of residuals, Ljung–Box (no residual autocorrelation).</li>
+      </ul>
+    `);
+
+    el('#d-results').insertAdjacentHTML('beforeend', `
+      <div class="paper-block">
+        <h3>Model & scenarios</h3>
+        <div class="table-scroll">
+          <table class="nice-table">
+            <thead>
+              <tr><th>Spec</th><th>Summary</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Baseline</td><td>ARMA(3,2) + TREND ⇒ gradual rise; good residual diagnostics</td></tr>
+              <tr><td>+ Price exog.</td><td>Price enters positively in-sample; improves fit vs trend-only</td></tr>
+              <tr><td>Scenario: +40% price</td><td>Short-run consumption ↑ (model-consistent with sample period)</td></tr>
+              <tr><td>Scenario: −60% price</td><td>Faster rise in consumption; sensitivity largest near shock</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small note">Interpret price elasticities cautiously (aggregate annual data; possible endogeneity).</p>
+      </div>
+    `);
+
+    el('#d-figures').innerHTML = `
+      <figure>
+        <img src="fig_arma_forecast_placeholder.png" alt="Forecast path" style="max-width:100%;height:auto;">
+        <figcaption>Baseline forecast and price-shock scenarios.</figcaption>
+      </figure>
+      <figure>
+        <img src="fig_residual_acf_placeholder.png" alt="Residual diagnostics" style="max-width:100%;height:auto;">
+        <figcaption>Residual ACF within 95% bands; Ljung–Box not rejected.</figcaption>
+      </figure>
+    `;
+
+    set('#d-discussion-text', `
+      For planning, augment with sectoral usage, weather (HDD), and policy dummies (efficiency drives).
+      Consider IV/structural approaches to address price endogeneity for elasticity inference.
+    `);
+  }
+
+  // 4) APPLIED ECONOMETRICS: Smoking & birthweight (matched panels)
+  if(id === 'birthweight-smoking'){
+    set('#d-title','Is Smoking the Effect on Birthweight? Matched Panel Evidence');
+    set('#d-meta','Applied Econometrics · Bilkent University · 2022');
+    el('#d-download').href = 'Applied_Econometrics_Project.pdf';
+
+    el('#d-keylist').innerHTML = `
+      <li>Large US natality data; strict mother matching across births.</li>
+      <li>OLS: smoking associated with ≈ <strong>−243g</strong> birthweight.</li>
+      <li>Mother fixed effects (within-mom): ≈ <strong>−144g</strong> — smaller, more credible.</li>
+    `;
+
+    set('#d-abstract-text', `
+      Omitted variables bias in cross-sections inflates smoking’s effect on birthweight.
+      Using matched panels and mother fixed effects, the estimated impact falls but remains substantial.
+    `);
+
+    set('#d-methods-text', `
+      <ul>
+        <li><strong>Data:</strong> NCHS natality; matched mothers across births with strict criteria.</li>
+        <li><strong>Models:</strong> OLS vs mother FE; specs with prenatal care, education, race, parity, year/state FE.</li>
+        <li><strong>Checks:</strong> Proxy for match quality; heterogeneity via smoking×covariate interactions.</li>
+      </ul>
+    `);
+
+    el('#d-results').insertAdjacentHTML('beforeend', `
+      <div class="paper-block">
+        <h3>Key estimates</h3>
+        <div class="table-scroll">
+          <table class="nice-table">
+            <thead>
+              <tr><th>Spec</th><th>Smoking effect on birthweight (g)</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>OLS (rich controls)</td><td>≈ −243</td><td>Likely upward biased in magnitude</td></tr>
+              <tr><td>Mother FE</td><td>≈ −144</td><td>Within-mom; preferred</td></tr>
+              <tr><td>FE + #cig/day</td><td>≈ −138; #cigs ↓ a bit</td><td>Intensity has small additional effect</td></tr>
+              <tr><td>Match proxy = 1</td><td>≈ −136 (FE)</td><td>Stricter matches → similar</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `);
+
+
+    set('#d-discussion-text', `
+      Fixed-effects estimates imply sizeable but smaller causal impact vs OLS.
+      Policy: smoking cessation programs during pregnancy likely improve neonatal health; effects vary by subgroup.
+    `);
+  }
+})();
+</script>
