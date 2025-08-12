@@ -51,9 +51,3 @@ Author: Sinem Demir
 🔗 LinkedIn: linkedin.com/in/sinem-demir
 🔗 GitLab: gitlab.com/sinemdemir
 
-
----
-
-If you want, I can now **make an upgraded version** of this README with **embedded live certificate previews** and clickable thumbnails for your projects, so visitors can directly see them from GitHub/GitLab.  
-
-Do you want me to prepare that enhanced version?
