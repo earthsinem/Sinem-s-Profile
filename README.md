@@ -41,15 +41,6 @@ The website highlights my **MSc and BSc theses**, selected papers, and professio
 
 ---
 
-## 📸 Screenshots
-### Academic Research Section
-![Academic Research](images/screenshot_research_section.png)
-
-### Awards & Certificates Timeline
-![Awards](images/screenshot_awards.png)
-
----
-
 ## 🚀 How to Run Locally
 1. Clone this repository:
    ```bash
